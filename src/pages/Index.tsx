@@ -3,8 +3,7 @@ import { BookingForm } from "@/components/BookingForm";
 import heroImage from "@/assets/coffee-hero.jpg";
 
 const Index = () => {
-  // Replace this with your actual n8n webhook URL
-  const webhookUrl = "YOUR_WEBHOOK_URL_HERE";
+  const webhookUrl = "https://n8n.srv1045103.hstgr.cloud/webhook/f72b46fe-3262-4d8d-b2be-77ff3dc49af5";
 
   return (
     <div className="min-h-screen bg-background">
