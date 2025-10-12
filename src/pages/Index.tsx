@@ -1,9 +1,11 @@
 import { Coffee, Users, Clock, Award } from "lucide-react";
 import { BookingForm } from "@/components/BookingForm";
 import heroImage from "@/assets/coffee-hero.jpg";
+import { useShaderBackground } from "@/components/ui/animated-shader-hero";
 
 const Index = () => {
   const webhookUrl = "https://n8n.srv1045103.hstgr.cloud/webhook-test/f72b46fe-3262-4d8d-b2be-77ff3dc49af5";
+  const canvasRef = useShaderBackground();
 
   return (
     <div className="min-h-screen bg-background">
@@ -75,8 +77,17 @@ const Index = () => {
       </section>
 
       {/* Booking Form Section */}
-      <section className="py-20 px-4">
-        <div className="max-w-4xl mx-auto">
+      <section className="relative py-20 px-4 overflow-hidden">
+        {/* Animated Shader Background */}
+        <div className="absolute inset-0 opacity-30">
+          <canvas
+            ref={canvasRef}
+            className="absolute inset-0 w-full h-full object-cover"
+            style={{ background: 'black' }}
+          />
+        </div>
+
+        <div className="relative z-10 max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
               Request Your Coffee Bar Quote
@@ -87,7 +98,7 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="bg-card rounded-2xl shadow-[var(--shadow-soft)] p-8 md:p-12 border border-border">
+          <div className="bg-card/95 backdrop-blur-sm rounded-2xl shadow-[var(--shadow-soft)] p-8 md:p-12 border border-border">
             <BookingForm webhookUrl={webhookUrl} />
           </div>
         </div>
