@@ -4,7 +4,7 @@ import heroImage from "@/assets/coffee-hero.jpg";
 import { useShaderBackground } from "@/components/ui/animated-shader-hero";
 
 const Index = () => {
-  const webhookUrl = "https://n8n.srv1045103.hstgr.cloud/webhook-test/f72b46fe-3262-4d8d-b2be-77ff3dc49af5";
+  const webhookUrl = "https://n8n.srv1045103.hstgr.cloud/webhook/f72b46fe-3262-4d8d-b2be-77ff3dc49af5";
   const canvasRef = useShaderBackground();
 
   return (
