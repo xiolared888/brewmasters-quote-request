@@ -1,73 +1,144 @@
-# Welcome to your Lovable project
+# Coffee Company Lead Intake Landing Page
 
-## Project info
+This project is a landing page and automation workflow designed to collect event inquiries for a coffee company, evaluate lead quality based on budget, and automatically route high-value leads for immediate follow-up.
 
-**URL**: https://lovable.dev/projects/6090bc21-78dc-404d-be26-28771120ce85
+The system uses a webhook-based form submission, data transformation logic, and integrations with email and Google Sheets to streamline lead management for baristas and staff.
 
-## How can I edit this code?
+---
 
-There are several ways of editing your application.
+## Overview
 
-**Use Lovable**
+The goal of this project is to:
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/6090bc21-78dc-404d-be26-28771120ce85) and start prompting.
+* Capture structured lead data from a landing page form
+* Automatically assess lead priority based on budget
+* Notify staff about high-value opportunities
+* Log all submissions for tracking and follow-up
 
-Changes made via Lovable will be committed automatically to this repo.
+This reduces manual review and ensures higher-budget events receive faster attention.
 
-**Use your preferred IDE**
+---
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## Features
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+* **Webhook Trigger**
 
-Follow these steps:
+  * Form submissions trigger a webhook event automatically
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+* **Data Processing**
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+  * Extracts and structures key details:
 
-# Step 3: Install the necessary dependencies.
-npm i
+    * Name
+    * Email address
+    * Venue
+    * Event date and time
+    * Budget
+    * Special requests (dietary needs, decaf, etc.)
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+* **Lead Priority Classification**
 
-**Edit a file directly in GitHub**
+  * Budgets over $5,000 are marked as high priority
+  * Budgets under $5,000 are marked as low priority
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+* **Automated Notifications**
 
-**Use GitHub Codespaces**
+  * High-priority leads trigger an email alert for immediate action
+  * Low-priority leads are logged for later review
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+* **Google Sheets Integration**
 
-## What technologies are used for this project?
+  * All leads are stored in a Google Sheet for visibility and tracking
 
-This project is built with:
+---
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## Workflow
 
-## How can I deploy this project?
+1. **Form Submission**
 
-Simply open [Lovable](https://lovable.dev/projects/6090bc21-78dc-404d-be26-28771120ce85) and click on Share -> Publish.
+   * A user submits the event inquiry form on the landing page
 
-## Can I connect a custom domain to my Lovable project?
+2. **Webhook Trigger**
 
-Yes, you can!
+   * The submission triggers a webhook endpoint
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+3. **Data Transformation**
+
+   * Incoming data is parsed and normalized
+
+4. **Lead Evaluation**
+
+   * Budget is evaluated to determine lead priority
+
+5. **Routing and Storage**
+
+   * High-priority leads:
+
+     * Email notification is sent
+     * Lead is written to Google Sheets
+   * Low-priority leads:
+
+     * Lead is logged to Google Sheets for future follow-up
+
+---
+
+## Tech Stack
+
+* Frontend landing page form
+* Webhook-based automation
+* Email service integration
+* Google Sheets API
+
+---
+
+## Setup Instructions
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/your-repo/coffee-company-landing-page.git
+   cd coffee-company-landing-page
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+3. Configure the webhook endpoint for form submissions
+
+4. Set up data transformation and budget evaluation logic
+
+5. Connect:
+
+   * Email service for notifications
+   * Google Sheets for lead storage
+
+For detailed setup steps, see the documentation in `docs/setup-guide.md`.
+
+---
+
+## Use Case
+
+This project is ideal for:
+
+* Small businesses handling event inquiries
+* Coffee carts and mobile vendors
+* Any service business that needs to prioritize leads by budget automatically
+
+---
+
+## Future Improvements
+
+* Add CRM integration
+* Expand lead scoring beyond budget
+* Add admin dashboard for lead review
+
+---
+
+## License
+
+MIT
 
 Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
